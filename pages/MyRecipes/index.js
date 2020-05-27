@@ -5,8 +5,8 @@ function MyRecipes({recipes}){
   let recipeCount = recipes.length;
   
   return(
-    <div>
-      <div className="mt-2 flex justify-between max-w-7xl mx-auto px-4 md:px-8">
+    <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="mt-2 flex justify-between">
         <h1 className="text-2xl font-semibold text-gray-900">My Recipes</h1>
           {/* <button
             @click="createNewRecipe()"
@@ -23,12 +23,7 @@ function MyRecipes({recipes}){
             <p className="pl-2">Add Recipe</p>
           </button> */}
       </div>
-      {/* <ul>
-        {recipes.map((recipe) => (
-          <li>{recipe.title}</li>
-        ))}
-      </ul> */}
-      <div className="mt-5 bg-white shadow overflow-hidden sm:rounded-md md:mx-8">
+      <div className="mt-5 bg-white shadow overflow-hidden sm:rounded-md">
         <div 
           className={recipeCount > 0 ? "hidden" : `px-8 py-12 text-gray-400 rounded-lg border-4 shadow-lg`}>
           <div className="flex justify-center items-center">
