@@ -5,7 +5,7 @@ function MyRecipes({recipes}){
   let recipeCount = recipes.length;
   
   return(
-    <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <div className="mx-auto">
       <div className="mt-2 flex justify-between">
         <h1 className="text-2xl font-semibold text-gray-900">My Recipes</h1>
           {/* <button

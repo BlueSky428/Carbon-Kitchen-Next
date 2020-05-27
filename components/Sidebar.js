@@ -253,7 +253,9 @@ function Sidebar({ children }) {
             </svg>
           </button>
         </div>
-        {children}
+        <div className="max-w-7xl px-4 md:px-8">
+          {children}
+        </div>
       </div>
     </div>
   );
