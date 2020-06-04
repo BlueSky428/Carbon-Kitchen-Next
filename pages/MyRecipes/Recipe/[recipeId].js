@@ -4,14 +4,14 @@ import Transition from "../../../components/Transition";
 
 function Recipe(recipe) {
   const [pageState, setPageState] = useState("view");
-  const stateToView = () => setPageState('view');
-  const stateToEdit = () => setPageState('edit');
-
   const viewableRecipe = recipe.recipe;
   const editableRecipe = recipe.recipe;
 
   const updatePageState = (state) => {
-    setPageState(state);
+    if(state === 'edit' )
+      setPageState(state);
+    else
+    setPageState('view');      
   } 
 
   return (
@@ -119,7 +119,7 @@ function Recipe(recipe) {
                 rows="3"
                 id="description"
                 placeholder="Put whatever description you'd like to have for your recipe here."
-                v-model="editableRecipe.description"
+                value={editableRecipe.description}
                 className="h-28 md:h-24 mt-1 form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 py-2 px-2 lg:py-1 rounded-md shadow-sm resize-none"
               />
             </div>
@@ -127,7 +127,9 @@ function Recipe(recipe) {
               className={`${pageState=='edit' ? "hidden" : "mt-3 text-sm leading-5 overflow-y-auto max-h-24 md:max-h-32"}`}
             >{viewableRecipe.description}</p>
           </div>
-          <RecipeActions pageState = {pageState} updatePageState = {updatePageState} />
+          <div className="mt-3 lg:mt-2"> {/*can't get classname to register on RecipeActions component */}
+            <RecipeActions pageState = {pageState} updatePageState = {updatePageState} />
+          </div>
         </div>
       </div>
     </div>
@@ -175,7 +177,7 @@ function RecipeActions({pageState, updatePageState}){
       </Link>
     </span>
 
-    <span className={`${{pageState}=='view' ? 'hidden' : ''} ml-1 sm:ml-2 md:ml-1 lg:ml-2 shadow-sm rounded-md`}>
+    <span className={`${pageState=='view' ? 'ml-1 sm:ml-2 md:ml-1 lg:ml-2 shadow-sm rounded-md' : 'hidden'}`}>
       <button
         onClick={() => updatePageState('edit')}
         type="button"
@@ -193,7 +195,7 @@ function RecipeActions({pageState, updatePageState}){
       </button>
     </span>
 
-    <span className={{pageState}=='edit' ? `ml-1 sm:ml-2 md:ml-1 lg:ml-2 shadow-sm rounded-l-md` : 'hidden'}>
+    <span className={pageState=='edit' ? 'ml-1 sm:ml-2 md:ml-1 lg:ml-2 shadow-sm rounded-l-md' : 'hidden'}>
       <button
         onClick={saveRecipe()}
         type="button"
@@ -216,9 +218,9 @@ function RecipeActions({pageState, updatePageState}){
       </button>
     </span>
 
-    <span className={{pageState}=='edit' ? "shadow-sm rounded-r-md" : "hidden"}>
+    <span className={pageState=='edit' ? "shadow-sm rounded-r-md" : "hidden"}>
       <button
-        onClick={cancelUpdate()}
+        onClick={() => updatePageState('cancel')}
         type="button"
         className="-ml-px inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-r-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
       >
@@ -236,7 +238,7 @@ function RecipeActions({pageState, updatePageState}){
     <span className="ml-1 sm:ml-2 md:ml-1 lg:ml-2 shadow-sm rounded-md">
       <button
         type="button"
-        className={`${{pageState} != 'view' ? 'opacity-50 cursor-not-allowed' : ''} inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out`}
+        className={`${pageState != 'view' ? 'opacity-50 cursor-not-allowed' : ''} inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out`}
       >
         <svg className="h-5 w-5 text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
           <path
@@ -253,7 +255,7 @@ function RecipeActions({pageState, updatePageState}){
     <span className="ml-1 sm:ml-2 md:ml-1 lg:ml-2 shadow-sm rounded-md">
       <button
         type="button"
-        className={`${{pageState} != 'view' ? 'opacity-50 cursor-not-allowed' : ''} inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out`}
+        className={`${pageState != 'view' ? 'opacity-50 cursor-not-allowed' : ''} inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out`}
       >
         <svg className="h-5 w-5 text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
           <path
