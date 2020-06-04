@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Link from 'next/link'
 import Transition from "../../../components/Transition";
+import PencilAlt from 'heroicons/solid/pencil-alt.svg';
+import XCircle from 'heroicons/solid/x-circle.svg';
+import ChevronLeft from 'heroicons/solid/chevron-left.svg';
+import Calendar from 'heroicons/outline/calendar.svg';
+import ClipboardList from 'heroicons/outline/clipboard-list.svg';
 
 function Recipe(recipe) {
   const [pageState, setPageState] = useState("view");
@@ -164,14 +169,7 @@ function RecipeActions({pageState, updatePageState}){
           type="button"
           className="inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
           >
-
-          <svg className="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <ChevronLeft className="h-5 w-5 text-gray-500" />
           <p className="hidden sm:block sm:pl-2 md:hidden lg:block">Back</p>
         </a>
       </Link>
@@ -183,14 +181,7 @@ function RecipeActions({pageState, updatePageState}){
         type="button"
         className="inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
       >
-        <svg className="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-          <path
-            fillRule="evenodd"
-            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-            clipRule="evenodd"
-          />
-        </svg>
+        <PencilAlt className="h-5 w-5 text-gray-500"/>
         <p className="hidden sm:block sm:pl-2 md:hidden lg:block">Edit</p>
       </button>
     </span>
@@ -224,13 +215,7 @@ function RecipeActions({pageState, updatePageState}){
         type="button"
         className="-ml-px inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-r-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
       >
-        <svg className="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fillRule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-            clipRule="evenodd"
-          />
-        </svg>
+        <XCircle className="h-5 w-5 text-gray-500" />
         <p className="hidden sm:block sm:pl-2 md:hidden lg:block">Cancel</p>
       </button>
     </span>
@@ -240,14 +225,7 @@ function RecipeActions({pageState, updatePageState}){
         type="button"
         className={`${pageState != 'view' ? 'opacity-50 cursor-not-allowed' : ''} inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out`}
       >
-        <svg className="h-5 w-5 text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
+        <Calendar className="h-5 w-5 text-gray-500" />
         <p className="hidden sm:block sm:pl-2 md:hidden lg:block">Plan</p>
       </button>
     </span>
@@ -257,14 +235,7 @@ function RecipeActions({pageState, updatePageState}){
         type="button"
         className={`${pageState != 'view' ? 'opacity-50 cursor-not-allowed' : ''} inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out`}
       >
-        <svg className="h-5 w-5 text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-          <path
-            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <ClipboardList className="h-5 w-5 text-gray-500" />
         <p className="hidden sm:block sm:pl-2 md:hidden lg:block">Shop</p>
       </button>
     </span>

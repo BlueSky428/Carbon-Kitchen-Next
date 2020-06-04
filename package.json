@@ -10,7 +10,9 @@
   "dependencies": {
     "@tailwindcss/ui": "^0.3.0",
     "autoprefixer": "^9.8.0",
+    "heroicons": "^0.3.6",
     "next": "9.4.2",
+    "next-svgr": "^0.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-transition-group": "^4.4.1",
