@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@tailwindcss/ui": "^0.3.0",
     "autoprefixer": "^9.8.0",
     "heroicons": "^0.3.6",
