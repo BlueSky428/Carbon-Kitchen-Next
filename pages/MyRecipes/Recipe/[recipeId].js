@@ -7,6 +7,13 @@ import ChevronLeft from 'heroicons/solid/chevron-left.svg';
 import Calendar from 'heroicons/outline/calendar.svg';
 import ClipboardList from 'heroicons/outline/clipboard-list.svg';
 import Save from '@fortawesome/fontawesome-free/svgs/regular/save.svg'
+import { useSelector, useDispatch } from 'react-redux'
+
+import {
+  handleAddTodo,
+  handleDeleteTodo,
+  handleToggle
+} from '../../../redux/actions/todos'
 
 function Recipe(recipe) {
   const [pageState, setPageState] = useState("view");
@@ -18,10 +25,25 @@ function Recipe(recipe) {
       setPageState(state);
     else
     setPageState('view');      
-  } 
+  }
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.todos);
 
   return (
     <div className="border-b-2 border-gray-300 py-2">
+      <div>
+      <button
+        onClick={() => dispatch({type: 'handleAddTodo',payload: "todo"})}
+        type="button"
+        className="inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
+      >
+        <p className="sm:pl-2 lg:block">addToDo</p>
+      </button>
+      
+  <span>{state}</span>
+      </div>
+
+
       <div className="h-full flex-col md:flex md:flex-row md:justify-between md:items-start">
         <div className="order-1 md:order-2">
           <span className={viewableRecipe.imageLink ? "" : `hidden`}>
